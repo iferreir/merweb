@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title if title else "MERRILL - Micromagnetic Modelling" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/js/main.js" defer></script>
+</head>
+<body>
+<div class="site-shell">
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="brand-block">
+                <div class="brand-title">MERRILL</div>
+                <div class="brand-subtitle">Micromagnetic Earth Related Robust Interpreted Language Laboratory</div>
+            </div>
+            <nav class="nav-links">
+                <a href="/" class="nav-link{% if request.url.path == '/' %} active{% endif %}">Home</a>
+                <a href="/downloads" class="nav-link{% if request.url.path.startswith('/downloads') %} active{% endif %}">Downloads</a>
+                <a href="/tutorials" class="nav-link{% if request.url.path.startswith('/tutorials') %} active{% endif %}">Tutorials</a>
+                <a href="/publications" class="nav-link{% if request.url.path.startswith('/publications') %} active{% endif %}">Publications</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-inner">
+            <h1 class="page-title">
+                {% block page_heading %}{{ title if title else "MERRILL - Micromagnetic Modelling" }}{% endblock %}
+            </h1>
+            <p class="page-kicker">
+                {% block page_tagline %}Micromagnetic tools and resources for rock and planetary magnetism{% endblock %}
+            </p>
+        </div>
+    </section>
+
+    <main class="page-body">
+        <div class="content-card">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <div>© {{ current_year if current_year else "2026" }} MERRILL • Rock Magnetism Group, University of Edinburgh</div>
+            <div class="footer-links">
+                <a href="/health" title="Service status">Health Check</a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>Publications</h1>
+    <p>Key papers describing MERRILL and studies that use it.</p>
+
+    <ul>
+        {% for pub in publications %}
+            <li>
+                <strong>{{ pub.title }}</strong><br>
+                {{ pub.authors }}{% if pub.year and pub.year != 0 %} ({{ pub.year }}){% endif %}<br>
+                <em>{{ pub.journal }}</em><br>
+                {% if pub.link %}
+                    <a href="{{ pub.link }}" target="_blank">View paper</a><br>
+                {% endif %}
+                {% if pub.notes %}
+                    <small>{{ pub.notes }}</small>
+                {% endif %}
+            </li>
+            <br>
+        {% else %}
+            <li>No publications in the database yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
